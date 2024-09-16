@@ -1,5 +1,5 @@
 <script setup>
-    const footer_links = [
+    const footerLinks = [
         [
             {
                 label: 'Home',
@@ -60,7 +60,7 @@
         ]
     ]
 
-    const social_links = [
+    const socialLinks = [
         {
             label: 'Instagram',
             icon: 'tabler:brand-instagram',
@@ -87,7 +87,7 @@
             </div>
 
             <div class="md:flex md:justify-between w-3/5">
-                <div v-for="links in footer_links" class="space-y-2">
+                <div v-for="links in footerLinks" class="space-y-2">
                     <div v-for="link in links">
                         <NuxtLink to="link.to">
                             {{ link.label }}
@@ -97,7 +97,7 @@
             </div>
 
             <div class="flex space-x-4">
-                <div v-for="link in social_links">
+                <div v-for="link in socialLinks">
                     <NuxtLink :to="link.to">
                         <UIcon :name="link.icon" class="h-5 w-5"/>
                     </NuxtLink>
