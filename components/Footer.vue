@@ -81,12 +81,12 @@
 
 <template>
     <div class="bg-gradient-to-r from-[#00012D] to-[#03025f] text-white font-semibold py-20 px-20 space-y-40">
-        <div class="md:flex flex-wrap md:justify-between space-y-10">
+        <div class="md:flex flex-wrap md:justify-between space-y-10 md:space-y-0 gap-10">
             <div>
                 <img src="/assets/img/logo.png" alt="logo">
             </div>
 
-            <div class="md:flex md:justify-between w-3/5">
+            <div class="flex-wrap md:flex md:justify-between w-3/5 gap-10">
                 <div v-for="links in footerLinks" class="space-y-2">
                     <div v-for="link in links">
                         <NuxtLink to="link.to">
