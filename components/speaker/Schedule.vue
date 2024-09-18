@@ -1,4 +1,6 @@
 <script setup>
+const route = useRoute()
+
 const schedules = [
     {
         id: 1,
@@ -155,8 +157,8 @@ const schedules = [
     },
 ];
 
-const currentDateTab = ref(0);
-const currentAgendaTab = ref(0);
+const currentDateTab = ref(0) || route.params.date;
+const currentAgendaTab = ref(0) || route.params.agenda;
 
 const onDateClicked = (dateId) => {
     currentDateTab.value = dateId;
@@ -186,7 +188,7 @@ const selectedAgendas = computed(() => {
 
 
         <div class="space-y-2">
-            <div class="flex justify-end">
+            <div class="hidden md:flex justify-end">
                 <div class="flex shadow-xl">
                     <div v-for="(schedule, index) in schedules" :key="schedule.id" @click="onDateClicked(index)"
                         :class="{'active': currentDateTab === index}"
@@ -197,10 +199,24 @@ const selectedAgendas = computed(() => {
                 </div>
             </div>
 
+            <div class="flex md:hidden space-x-2">
+                <div class="shadow-lg px-2 py-2">
+                    <select v-model="currentDateTab" class="bg-white outline-none">
+                        <option v-for="(schedule, index) in schedules" :value="index">{{ schedule.date.date }}</option>
+                    </select>
+                </div>
+                <div class="shadow-lg px-2 py-2">
+                    <select v-model="currentAgendaTab" class="bg-white outline-none">
+                        <option value="0">Conference Agenda</option>
+                        <option value="1">Workshop Agenda</option>
+                        <option value="2">Round Table Agenda</option>
+                    </select>
+                </div>
+            </div>
 
-            <div class="flex space-x-2 w-full">
-                <div>
-                    <div class="py-2 px-6 cursor-pointer active-poly"
+            <div class="md:flex space-x-2 w-full">
+                <div class="hidden md:block">
+                    <div class="py-2 px-6 cursor-pointer"
                         :class="{ 'active-poly': currentAgendaTab === 0,'active': currentAgendaTab===0, 'inactive': currentAgendaTab !== 0 }"
                         @click="() => onAgendaClicked(0)">
                         <h1>Conference Agenda</h1>
@@ -241,6 +257,14 @@ const selectedAgendas = computed(() => {
 .inactive {
     color: #020129;
     background-color: #F5F9FC;
+    clip-path: polygon(95% 0,
+            95% 35%,
+            95% 0%,
+            95% 65%,
+            95% 100%,
+            0 100%,
+            0 0,
+            0 0);
 }
 
 .active-poly {
