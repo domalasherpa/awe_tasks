@@ -1,5 +1,6 @@
 <script setup>
 const route = useRoute()
+const router = useRouter()
 
 const schedules = [
     {
@@ -157,8 +158,15 @@ const schedules = [
     },
 ];
 
-const currentDateTab = ref(0) || route.params.date;
-const currentAgendaTab = ref(0) || route.params.agenda;
+const currentDateTab = ref(route.query.date ? parseInt(route.query.date): 0);
+const currentAgendaTab = ref(route.query.agenda ? parseInt(route.query.agenda): 0);
+
+watch([currentDateTab, currentAgendaTab], ([currentDate, currentAgenda])=>{
+    router.push({
+        path: route.path,
+        query: {'date': currentDate, 'agenda': currentAgenda}
+    })
+})
 
 const onDateClicked = (dateId) => {
     currentDateTab.value = dateId;
@@ -172,8 +180,6 @@ const onAgendaClicked = (agendaId) => {
 const selectedAgendas = computed(() => {
     return schedules[currentDateTab.value].agenda[currentAgendaTab.value];
 })
-
-
 
 </script>
 <template>
