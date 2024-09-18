@@ -1,17 +1,19 @@
 <script setup>
     const route = useRoute()
     const id = ref(route.params.id)
-
-    const apiUrl = `https://swa-2024-dev.up.railway.app/api/speakers/${id.value}`;
-    const {status, data} = await useFetch(apiUrl);
+    const speakerApiUrl = `https://swa-2024-dev.up.railway.app/api/speakers/${id.value}`;
+    const { data, error, status } = await useFetch(speakerApiUrl);
 </script>
 <template>
-    <div v-if="status=='pending'">
+    <div v-if="status==='pending'">
         <h1>Loading...</h1>
     </div>
-    <div v-else class="lg:flex  border-2 shadow-xl text-sm overflow-clip">
+    <div v-else-if="status==='error'">
+        <h1>Unable to fetch...</h1>
+    </div>
+    <div v-else class="w-full lg:flex  border-2 shadow-xl text-sm overflow-clip">
         <div class="lg:w-96">
-            <img :src="data.speaker.profileImage" alt="profile image" class="w-full h-full object-cover object-center">
+            <img :src="useApiUrl(data.speaker.profileImage)" alt="profile image" class="w-full h-full object-cover object-center">
         </div>
         <div class="lg:w-3/5 p-4 md:px-14 md:py-8 space-y-4">
             <div>
@@ -30,6 +32,6 @@
                     <UIcon name="tabler:brand-x" class="h-5 w-5 bg-primary-500"/>
                 </NuxtLink>
             </div>
-        </div>
+        </div> 
     </div>
 </template>
