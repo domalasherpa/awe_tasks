@@ -80,7 +80,7 @@
 </script>
 
 <template>
-    <div class="bg-gradient-to-r from-[#00012D] to-[#03025f] text-white font-semibold py-20 px-20 space-y-40">
+    <div class="max-[600px]: text-sm bg-gradient-to-r from-[#00012D] to-[#03025f] text-white font-semibold py-20 px-20 space-y-40 min-[320]">
         <div class="md:flex flex-wrap md:justify-between space-y-10 md:space-y-0 gap-10">
             <div>
                 <img src="/assets/img/logo.png" alt="logo">
