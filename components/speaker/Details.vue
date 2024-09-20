@@ -1,7 +1,7 @@
 <script setup>
     const route = useRoute()
     const id = ref(route.params.id)
-    const { data, error, status } = await useSpeaker().getSingleSpeaker(id);
+    const { data, error, status } = await useSpeaker().getSingleSpeaker(id.value);
 </script>
 <template>
     <div v-if="status==='pending'">
@@ -10,11 +10,11 @@
     <div v-else-if="status==='error'">
         <h1>Unable to fetch...</h1>
     </div>
-    <div v-else class="w-full lg:flex  border-2 shadow-xl text-sm overflow-clip">
-        <div class="lg:w-96">
+    <div v-else class="w-full md:flex  border-2 shadow-xl text-sm overflow-clip">
+        <div class="md:w-2/5">
             <img :src="useApiUrl(data.speaker.profileImage)" alt="profile image" class="w-full h-full object-cover object-center">
         </div>
-        <div class="lg:w-3/5 p-4 md:px-14 md:py-8 space-y-4">
+        <div class="md:w-3/5 p-4 md:px-14 md:py-8 space-y-4">
             <div>
                 <h1 class="font-semibold text-2xl">{{ data.speaker.name }}</h1>
                 <h2 class="font-semibold">{{  data.speaker.designation }}</h2>
