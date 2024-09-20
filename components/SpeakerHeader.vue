@@ -1,58 +1,43 @@
 <script setup lang="ts">
 const links = [{
     label: 'Home',
-    icon: '',
     to: '/'
 },
 {
     label: 'Agenda',
-    icon: '',
     to: '/agenda'
 },
 {
     label: 'Speakers',
-    icon: '',
     to: '/speakers'
 },
 {
     label: 'Sponsors',
-    icon: '',
     to: '/sponsors'
 },
 {
     label: 'Exhibitors',
-    icon: '',
     to: '/exhibitors'
 },
 {
     label: 'Media center',
-    icon: '',
     to: '/mediacenter'
 },
 {
     label: 'Digital Library',
-    icon: '',
     to: '/digitallibrary'
 },
 {
     label: 'Contact us',
-    icon: '',
     to: '/contactus'
 }
 ]
 //items for the drop down in navbar
-const items = [
-    [{
-        label: 'item1'
-    }],
-    [{
-        label: 'item2'
-    }],
-    [{
+const items = [{
+        label: 'item1',
+        label: 'item2',
         label: 'item3'
-    }]
-
-]
+}]
 
 const isOpen = ref(false);
 </script>

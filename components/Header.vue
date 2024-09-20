@@ -1,42 +1,34 @@
 <script setup lang="ts">
 const links = [{
     label: 'Home',
-    icon: '',
     to: '/'
 },
 {
     label: 'Agenda',
-    icon: '',
     to: '/agenda'
 },
 {
     label: 'Speakers',
-    icon: '',
     to: '/speakers'
 },
 {
     label: 'Sponsors',
-    icon: '',
     to: '/sponsors'
 },
 {
     label: 'Exhibitors',
-    icon: '',
     to: '/exhibitors'
 },
 {
     label: 'Media center',
-    icon: '',
     to: '/mediacenter'
 },
 {
     label: 'Digital Library',
-    icon: '',
     to: '/digitallibrary'
 },
 {
     label: 'Contact us',
-    icon: '',
     to: '/contactus'
 }
 ]
@@ -52,7 +44,6 @@ const items = [
         label: 'item3'
     }]
 ]
-
 const isOpen = ref(false)
 </script>
 
@@ -80,7 +71,6 @@ const isOpen = ref(false)
             <div>
                 <img src="/assets/img/logo.png" alt="">
             </div>
-            <!-- Change this in md -->
             <div class="hidden min-[1400px]:flex w-3/4 lg:justify-evenly lg:items-center">
                 <div v-for="link in links">
                     <NuxtLink :to="link.to" active-class="text-[#0058A0]">

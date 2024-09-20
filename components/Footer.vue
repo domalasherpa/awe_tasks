@@ -3,58 +3,48 @@
         [
             {
                 label: 'Home',
-                icon: '',
                 to: '/'
             },
         ],
         [
             {
                 label: 'Agenda',
-                icon: '',
                 to: '/'
             },
             {
                 label: 'Speakers',
-                icon: '',
                 to: '/'
             },
             {
                 label: 'Sponsors',
-                icon: '',
                 to: '/'
             },
             {
                 label: 'Add poll',
-                icon: '',
                 to: '/'
             },
         ],
         [
             {
                 label: 'News',
-                icon: '',
                 to: '/'
             },
             {
                 label: 'Gallery',
-                icon: '',
                 to: '/'
             },
             {
                 label: 'Archive',
-                icon: '',
                 to: '/'
             },
         ],
         [
             {
                 label: 'Terms of Use',
-                icon: '',
                 to: '/'
             },
             {
                 label: 'Privacy policy',
-                icon: '',
                 to: '/'
             },
         ]

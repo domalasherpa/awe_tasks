@@ -1,10 +1,8 @@
 <script setup>
-  const props = defineProps({
+defineProps({
     speaker: Object
-  })
-  
+})
 </script>
-
 <template>
     <NuxtLink :to="{name: 'speaker-id', params: {id:speaker.id}}">
         <div class="bg-white text-xs grid grid-rows-custom h-full">
