@@ -17,7 +17,7 @@ const { data, error, status } = await useFetch(speakerApiUrl)
                     </div>
                     <div v-else class="w-full md:flex  border-2 shadow-xl text-sm overflow-clip">
                         <div class="md:w-2/5">
-                            <img :src="useApiUrl(data.speaker.profileImage)" alt="profile image"
+                            <img :src="getImageApiUrl(data.speaker.profileImage)" alt="profile image"
                                 class="w-full h-full object-cover object-center">
                         </div>
                         <div class="md:w-3/5 p-4 md:px-14 md:py-8 space-y-4">
