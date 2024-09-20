@@ -1,6 +1,6 @@
 <script setup>
 const speakerApiUrl = 'https://swa-2024-dev.up.railway.app/api/speakers';
-const { data:speakers, error, status } = await useFetch(speakerApiUrl);
+const { data:speakers, error, status } = await useSpeaker().getSpeakers();
 </script>
 
 <template>
@@ -11,6 +11,9 @@ const { data:speakers, error, status } = await useFetch(speakerApiUrl);
             </div>
             <div v-if="status === 'pending'">
                 <h1>Loading...</h1>
+            </div>
+            <div v-else-if="status === 'error'">
+                <h1>Error fetching data. Please try again later.</h1>
             </div>
             <div v-else class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-2 gap-y-6">
                 <div v-for="speaker in speakers">

@@ -1,8 +1,7 @@
 <script setup>
     const route = useRoute()
     const id = ref(route.params.id)
-    const speakerApiUrl = `https://swa-2024-dev.up.railway.app/api/speakers/${id.value}`;
-    const { data, error, status } = await useFetch(speakerApiUrl);
+    const { data, error, status } = await useSpeaker().getSingleSpeaker(id);
 </script>
 <template>
     <div v-if="status==='pending'">
