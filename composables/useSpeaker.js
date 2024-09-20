@@ -7,7 +7,7 @@ export default function useSpeaker() {
     }
 
     const getSingleSpeaker = async (id) => {
-        const speaker = `${speakerApiUrl}/${id.value}`;
+        const speaker = `${speakerApiUrl}/${id}`;
         const { data, error, status } = await useFetch(speaker);
         return { data, error, status };
     }
