@@ -15,7 +15,7 @@ const { data:speakers, error, status } = await useSpeaker().getSpeakers();
             <div v-else-if="status === 'error'">
                 <h1>Error fetching data. Please try again later.</h1>
             </div>
-            <div v-else class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-2 gap-y-6">
+            <div v-else class="grid max-[400px]:grid-cols-1 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-2 gap-y-6">
                 <div v-for="speaker in speakers">
                     <SpeakerCard :speaker="speaker" />
                 </div>
