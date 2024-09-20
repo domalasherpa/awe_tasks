@@ -83,7 +83,7 @@ const isOpen = ref(false);
                 <div>
                     <img src="/assets/img/logo.png" alt="">
                 </div>
-                <div class="hidden xl:flex w-3/4 lg:justify-evenly lg:items-center">
+                <div class="hidden min-[1400px]:flex w-3/4 lg:justify-evenly lg:items-center">
                     <div v-for="link in links">
                         <NuxtLink :to="link.to" active-class="text-[#0058A0]">
                             {{ link.label }}
@@ -94,7 +94,7 @@ const isOpen = ref(false);
                         <h1>Live Streaming</h1>
                     </div>
                 </div>
-                <UIcon name="ic:baseline-menu" class="xl:hidden w-10 h-10 cursor-pointer" @click="isOpen = true" />
+                <UIcon name="ic:baseline-menu" class="min-[1400px]:hidden w-10 h-10 cursor-pointer" @click="isOpen = true" />
             </div>
         </div>
         <p class="absolute bottom-10 text-xl sm:text-2xl md:text-4xl px-4 md:px-20 ">Speaker Profile</p>

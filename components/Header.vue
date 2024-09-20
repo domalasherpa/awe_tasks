@@ -81,7 +81,7 @@ const isOpen = ref(false)
                 <img src="/assets/img/logo.png" alt="">
             </div>
             <!-- Change this in md -->
-            <div class="hidden lg:flex w-3/4 lg:justify-evenly lg:items-center">
+            <div class="hidden min-[1400px]:flex w-3/4 lg:justify-evenly lg:items-center">
                 <div v-for="link in links">
                     <NuxtLink :to="link.to" active-class="text-[#0058A0]">
                         {{ link.label }}
@@ -92,9 +92,9 @@ const isOpen = ref(false)
                     <h1>Live Streaming</h1>
                 </div>
             </div>
-            <UIcon name='ic:baseline-menu' class="lg:hidden w-10 h-10 cursor-pointer" @click="isOpen = true" />
+            <UIcon name='ic:baseline-menu' class="min-[1400px]:hidden w-10 h-10 cursor-pointer" @click="isOpen = true" />
         </div>
-        <div class="md:hidden">
+        <div class="hidden">
             <USlideover v-model="isOpen" prevent-close>
                 <UCard class="flex flex-col flex-1"
                     :ui="{ body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
