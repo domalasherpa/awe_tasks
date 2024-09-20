@@ -1,8 +1,7 @@
 <script setup>
-const speakerApiUrl = 'https://swa-2024-dev.up.railway.app/api/speakers';
-const { data:speakers, error, status } = await useSpeaker().getSpeakers();
+const speakerApiUrl = 'https://swa-2024-dev.up.railway.app/api/speakers'
+const { data:speakers, error, status } = await await useFetch(speakerApiUrl)
 </script>
-
 <template>
     <NuxtLayout>
         <div class="w-full space-y-10 my-10 md:my-20">
