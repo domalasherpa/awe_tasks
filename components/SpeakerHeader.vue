@@ -33,17 +33,23 @@ const links = [{
 }
 ]
 //items for the drop down in navbar
-const items = [{
-        label: 'item1',
-        label: 'item2',
+const items = [
+    [{
+        label: 'item1'
+    }],
+    [{
+        label: 'item2'
+    }],
+    [{
         label: 'item3'
-}]
+    }],
+]
 
 const isOpen = ref(false);
 </script>
 
 <template>
-    <div class="relative bg-[url('/assets/img/speaker-header.png')] bg-[85rem_45rem] lg:bg-[center_96rem] text-white font-semibold text-sm min-h-80">
+    <div class="relative bg-[url('/assets/img/speaker-header.jpg')] bg-[center_15%] bg-cover bg-no-repeat text-white font-semibold text-sm min-h-80">
         <div class="absolute w-full h-full bg-gradient-to-b from-black to-transparent"></div>
         <div class="relative z-0 px-4 md:py-8 md:px-20">
             <div class="flex items-center justify-center md:justify-end space-x-4 py-4 text-xs">
