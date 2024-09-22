@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { parse } from 'vue/compiler-sfc';
-
 const route = useRoute()
 const router = useRouter()
 
@@ -178,15 +176,27 @@ const schedules: Schedule[] = [
     },
 ];
 
+const queryDate = computed(():number=>{
+    return route.query.date ? parseInt(route.query.date as string): 0;
+})
+const queryAgenda = computed(():number=>{
+    return route.query.agenda ? parseInt(route.query.agenda as string): 0;
+})
 
-const currentDateTab = ref<number>(route.query.date ? parseInt(route.query.date as string): 0);
-const currentAgendaTab = ref<number>(route.query.agenda ? parseInt(route.query.agenda as string): 0);
+const currentDateTab = ref<number>(queryDate.value);
+const currentAgendaTab = ref<number>(queryAgenda.value);
 
 watch([currentDateTab, currentAgendaTab], ([currentDate, currentAgenda])=>{
     router.push({
         path: route.path,
         query: {'date': currentDate, 'agenda': currentAgenda}
     })
+})
+
+
+watchEffect(()=>{
+    currentDateTab.value = queryDate.value;
+    currentAgendaTab.value = queryAgenda.value;
 })
 
 const onDateClicked = (dateId: number) : void => {
@@ -212,8 +222,6 @@ const selectedAgendas = computed(():Agenda[] => {
                 exercitation.
             </p>
         </div>
-
-
         <div class="space-y-2">
             <div class="hidden md:flex justify-end">
                 <div class="flex shadow-xl">
