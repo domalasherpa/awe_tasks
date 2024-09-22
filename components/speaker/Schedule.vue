@@ -1,8 +1,28 @@
-<script setup>
+<script setup lang="ts">
+import { parse } from 'vue/compiler-sfc';
+
 const route = useRoute()
 const router = useRouter()
 
-const schedules = [
+interface Agenda {
+    title: string;
+    desc: string;
+    startTime: string;
+    endTime: string;
+}
+
+interface Schedule{
+    id: number;
+    date: {
+        date: string;
+        day: string;
+    };
+    agenda: {
+        [key: number]: Agenda[];
+    }
+}
+
+const schedules: Schedule[] = [
     {
         id: 1,
         date: {
@@ -10,7 +30,7 @@ const schedules = [
             day: "Sunday",
         },
         agenda: {
-            "0": [
+            0: [
                 {
                     title: "Panel Discussion",
                     desc: "translating targets into action through regulatory innovations 20",
@@ -24,7 +44,7 @@ const schedules = [
                     endTime: "10:00 AM",
                 },
             ],
-            "1": [
+            1: [
                 {
                     title: "Keynote",
                     desc: "Towards a safer and more just water future 20",
@@ -38,7 +58,7 @@ const schedules = [
                     endTime: "10:00 AM",
                 },
             ],
-            "2": [
+            2: [
                 {
                     title: "Keynote",
                     desc: "Towards a safer and more just water future 20",
@@ -61,7 +81,7 @@ const schedules = [
             day: "Monday",
         },
         agenda: {
-            "0": [
+            0: [
                 {
                     title: "Panel Discussion",
                     desc: "translating targets into action through regulatory innovations 21",
@@ -75,7 +95,7 @@ const schedules = [
                     endTime: "10:00 AM",
                 },
             ],
-            "1": [
+            1: [
                 {
                     title: "Keynote",
                     desc: "Towards a safer and more just water future 21",
@@ -89,7 +109,7 @@ const schedules = [
                     endTime: "10:00 AM",
                 },
             ],
-            "2": [
+            2: [
                 {
                     title: "Keynote",
                     desc: "Towards a safer and more just water future 21",
@@ -112,7 +132,7 @@ const schedules = [
             day: "Tuesday",
         },
         agenda: {
-            "0": [
+            0: [
                 {
                     title: "Panel Discussion",
                     desc: "translating targets into action through regulatory innovations 22",
@@ -126,7 +146,7 @@ const schedules = [
                     endTime: "10:00 AM",
                 },
             ],
-            "1": [
+            1: [
                 {
                     title: "Keynote",
                     desc: "Towards a safer and more just water future 22",
@@ -140,7 +160,7 @@ const schedules = [
                     endTime: "10:00 AM",
                 },
             ],
-            "2": [
+            2: [
                 {
                     title: "Keynote",
                     desc: "Towards a safer and more just water future 22",
@@ -158,8 +178,9 @@ const schedules = [
     },
 ];
 
-const currentDateTab = ref(route.query.date ? parseInt(route.query.date): 0);
-const currentAgendaTab = ref(route.query.agenda ? parseInt(route.query.agenda): 0);
+
+const currentDateTab = ref<number>(route.query.date ? parseInt(route.query.date as string): 0);
+const currentAgendaTab = ref<number>(route.query.agenda ? parseInt(route.query.agenda as string): 0);
 
 watch([currentDateTab, currentAgendaTab], ([currentDate, currentAgenda])=>{
     router.push({
@@ -168,16 +189,16 @@ watch([currentDateTab, currentAgendaTab], ([currentDate, currentAgenda])=>{
     })
 })
 
-const onDateClicked = (dateId) => {
+const onDateClicked = (dateId: number) : void => {
     currentDateTab.value = dateId;
     currentAgendaTab.value = 0;
 }
 
-const onAgendaClicked = (agendaId) => {
+const onAgendaClicked = (agendaId: number) : void => {
     currentAgendaTab.value = agendaId;
 }
 
-const selectedAgendas = computed(() => {
+const selectedAgendas = computed(():Agenda[] => {
     return schedules[currentDateTab.value].agenda[currentAgendaTab.value];
 })
 
