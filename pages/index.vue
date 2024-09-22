@@ -1,6 +1,22 @@
-<script setup>
+<script setup lang="ts">
+definePageMeta({
+  colorMode: 'light',
+})
+
+import type { AsyncData, AsyncDataRequestStatus } from '#app';
+
 const speakerApiUrl = 'https://swa-2024-dev.up.railway.app/api/speakers'
-const { data:speakers, error, status } = await await useFetch(speakerApiUrl)
+
+interface Speaker{
+    id: number,
+    name: string,
+    designation: string,
+    companyName: string,
+    profileImage: string
+}
+
+const { data:speakers, status} = await useFetch(speakerApiUrl) as AsyncData<{data: Speaker}, AsyncDataRequestStatus>
+
 </script>
 <template>
     <NuxtLayout>

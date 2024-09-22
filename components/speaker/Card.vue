@@ -1,7 +1,16 @@
-<script setup>
-defineProps({
-    speaker: Object
-})
+<script setup lang="ts">
+
+interface Speaker{
+    id: number,
+    name: string,
+    designation: string,
+    companyName: string,
+    profileImage: string
+}
+
+defineProps<{
+    speaker: Speaker
+}>()
 
 </script>
 <template>
