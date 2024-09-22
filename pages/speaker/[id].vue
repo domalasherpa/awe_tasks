@@ -1,4 +1,8 @@
 <script setup>
+definePageMeta({
+  colorMode: 'light',
+})
+
 const route = useRoute()
 const speakerApiUrl = `https://swa-2024-dev.up.railway.app/api/speakers/${route.params.id}`
 const { data, error, status } = await useFetch(speakerApiUrl)
